@@ -1,7 +1,7 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Cart() {
-  const cartProducts = useSelector((state) => state.cart.products);
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   function ShowCart() {
     return <div>Yay Items!</div>;
@@ -9,8 +9,8 @@ export default function Cart() {
 
   return (
     <div>
-      {cartProducts.length > 0 ? (
-        <ShowCart />
+      {cartItems.length > 0 ? (
+        ShowCart()
       ) : (
         <div>There are no items in your cart.</div>
       )}
