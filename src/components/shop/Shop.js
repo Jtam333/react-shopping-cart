@@ -5,7 +5,7 @@ export default function Shop() {
   return (
     <div>
       {products.map((product) => (
-        <ShopItemCard name={product.name} price={product.price} />
+        <ShopItemCard key={product.name} name={product.name} price={product.price} />
       ))}
     </div>
   );
