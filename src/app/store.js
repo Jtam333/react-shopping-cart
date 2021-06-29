@@ -18,7 +18,7 @@ const persistConfig = {
   storage,
 };
 
-//Creates a root reducer for persistReducer
+//Creates a root reducer for persistReducer to consume
 const reducers = combineReducers({
   cart: cartReducer,
 });

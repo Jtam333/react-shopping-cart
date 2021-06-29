@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import { selectCart, selectCartTotal } from "./cartSlice";
+import { Box, Divider } from "@material-ui/core";
 
 export default function Cart() {
   const cartItems = useSelector(selectCart);
@@ -10,9 +11,19 @@ export default function Cart() {
     return (
       <div>
         {cartItems.map((item) => (
-          <CartItem key={item.name} item={item} />
+          <>
+            <CartItem key={item.name} item={item} />
+            <Divider />
+          </>
         ))}
-        <div>Subtotal: {subtotal.toFixed(2)}</div>
+
+        <Box
+          textAlign="right"
+          fontWeight="fontWeightBold"
+          fontSize="h6.fontSize"
+        >
+          Subtotal: ${subtotal.toFixed(2)}
+        </Box>
       </div>
     );
   }
