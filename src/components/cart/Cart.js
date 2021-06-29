@@ -1,14 +1,10 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
+import { selectCart, selectCartTotal } from "./cartSlice";
 
 export default function Cart() {
-  const cartItems = useSelector((state) => state.cart.cartItems);
-
-  function calculateSubtotal() {
-    const reducer = (total, item) => total + item.totalPrice;
-    console.log(cartItems)
-    return cartItems.reduce(reducer, 0);
-  }
+  const cartItems = useSelector(selectCart);
+  const subtotal = useSelector(selectCartTotal);
 
   function ShowCart() {
     return (
@@ -16,7 +12,7 @@ export default function Cart() {
         {cartItems.map((item) => (
           <CartItem key={item.name} item={item} />
         ))}
-        <div>Subtotal: {calculateSubtotal().toFixed(2)}</div>
+        <div>Subtotal: {subtotal.toFixed(2)}</div>
       </div>
     );
   }

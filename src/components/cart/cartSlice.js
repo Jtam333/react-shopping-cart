@@ -6,9 +6,13 @@ export const cartSlice = createSlice({
     cartItems: [],
   },
   reducers: {
+    /**
+     *
+     * @param {*} state
+     * @param {*} action
+     */
     addToCart: (state, action) => {
-      const addedItem = {...action.payload};
-      const calculateTotalPrice = (item) => item.price * item.quantity;
+      const addedItem = { ...action.payload };
 
       // Search if the item we're wanting to add already exists in cart
       const itemExists = state.cartItems.find(
@@ -24,17 +28,14 @@ export const cartSlice = createSlice({
         let existingItem = state.cartItems[foundIndex];
 
         existingItem.quantity++;
-        existingItem.totalPrice = calculateTotalPrice(existingItem);
       } else {
         // Add new item to cart state
-        console.log(JSON.stringify(addedItem))
         addedItem.quantity = 1;
-        addedItem.totalPrice = calculateTotalPrice(addedItem);
         state.cartItems.push(addedItem);
       }
     },
     removeFromCart: (state, action) => {
-      const item = {...action.payload};
+      const item = { ...action.payload };
 
       const foundIndex = state.cartItems.findIndex((x) => x.name === item.name);
       state.cartItems.splice(foundIndex, 1);
@@ -44,5 +45,18 @@ export const cartSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { addToCart, removeFromCart } = cartSlice.actions;
+
+export const selectCart = (state) => {
+  const mapFunction = (item) => ({
+    ...item,
+    totalPrice: item.price * item.quantity,
+  });
+  return state.cart.cartItems.map(mapFunction);
+};
+
+export const selectCartTotal = (state) => {
+  const reduceFunction = (total, item) => total + item.price * item.quantity;
+  return state.cart.cartItems.reduce(reduceFunction, 0);
+};
 
 export default cartSlice.reducer;

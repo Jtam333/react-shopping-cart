@@ -12,7 +12,9 @@ export default function CartItem(props) {
       <div>Price: {item.price.toFixed(2)}</div>
       <div>Quantity: {item.quantity}</div>
       <div>Total Price: {item.totalPrice.toFixed(2)}</div>
-      <Button onClick={() => dispatch(removeFromCart(item))}>Remove Item</Button>
+      <Button onClick={() => dispatch(removeFromCart(item))}>
+        Remove Item
+      </Button>
     </div>
   );
 }
