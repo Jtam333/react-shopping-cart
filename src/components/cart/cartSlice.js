@@ -7,7 +7,7 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      const addedItem = action.payload;
+      const addedItem = {...action.payload};
       const calculateTotalPrice = (item) => item.price * item.quantity;
 
       // Search if the item we're wanting to add already exists in cart
@@ -27,12 +27,18 @@ export const cartSlice = createSlice({
         existingItem.totalPrice = calculateTotalPrice(existingItem);
       } else {
         // Add new item to cart state
+        console.log(JSON.stringify(addedItem))
         addedItem.quantity = 1;
         addedItem.totalPrice = calculateTotalPrice(addedItem);
         state.cartItems.push(addedItem);
       }
     },
-    removeFromCart: (state) => console.log("Removed!"),
+    removeFromCart: (state, action) => {
+      const item = {...action.payload};
+
+      const foundIndex = state.cartItems.findIndex((x) => x.name === item.name);
+      state.cartItems.splice(foundIndex, 1);
+    },
   },
 });
 

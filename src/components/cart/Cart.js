@@ -6,6 +6,7 @@ export default function Cart() {
 
   function calculateSubtotal() {
     const reducer = (total, item) => total + item.totalPrice;
+    console.log(cartItems)
     return cartItems.reduce(reducer, 0);
   }
 
