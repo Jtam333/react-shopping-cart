@@ -11,7 +11,7 @@ import { addToCart } from "../cart/cartSlice";
 /**
  * Card component for a single product in shop
  *
- * @param {*} props contains product object. E.g. {name: "product", price: 1}
+ * @param {{item: {name: string, price: number}}} props contains product object.
  * @returns ShopItemCard component
  */
 export default function ShopItemCard(props) {

@@ -6,7 +6,7 @@ import { removeFromCart } from "./cartSlice";
 /**
  * Component for a unique item in shopping cart
  *
- * @param {*} props contains cart item object. E.g. {name: "a", price: 10, quantity: 1, totalPrice: 10}
+ * @param {{item: {name: string, price: number, quantity: number, totalPrice: number}}} props contains cart item object.
  * @returns CartItem component
  */
 export default function CartItem(props) {

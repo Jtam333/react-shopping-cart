@@ -48,7 +48,7 @@ export const { addToCart, removeFromCart } = cartSlice.actions;
  * Selector function to get the items in cart.
  *
  * @param {*} state state of cart
- * @returns an array of objects representing items in cart (sum of price per item included)
+ * @returns {[*]} an array of objects representing items in cart (sum of price per item included)
  */
 export const selectCart = (state) => {
   const mapFunction = (item) => ({
@@ -62,7 +62,7 @@ export const selectCart = (state) => {
  * Selector function to get the total price of all items in the cart.
  *
  * @param {*} state state of cart
- * @returns the total price of all items in cart
+ * @returns {number} the total price of all items in cart
  */
 export const selectCartTotal = (state) => {
   const reduceFunction = (total, item) => total + item.price * item.quantity;
