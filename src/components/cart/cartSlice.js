@@ -12,19 +12,15 @@ export const cartSlice = createSlice({
     addToCart: (state, action) => {
       const addedItem = { ...action.payload };
 
-      // Search if the item we're wanting to add already exists in cart
-      const itemExists = state.cartItems.find(
+      // Find the index of the item if it already exists in cart
+      const itemIndex = state.cartItems.findIndex(
         (item) => item.name === addedItem.name
       );
 
       // Adds the new item to cart only if item isn't already in cart. Otherwise increases item quantity by 1.
-      if (itemExists) {
+      if (itemIndex >= 0) {
         // Finds the existing item in cart state and increments its quantity by 1.
-        const foundIndex = state.cartItems.findIndex(
-          (x) => x.name === addedItem.name
-        );
-        const existingItem = state.cartItems[foundIndex];
-
+        const existingItem = state.cartItems[itemIndex];
         existingItem.quantity++;
       } else {
         // Add new item to cart state
