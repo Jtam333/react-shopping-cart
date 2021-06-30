@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/**
+ * Slice to represent shopping cart state and its actions.
+ */
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {

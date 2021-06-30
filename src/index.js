@@ -8,7 +8,9 @@ import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* Provides storage of state with redux. */}
     <Provider store={store}>
+      {/* PersistGate is for persisting the redux state between refreshes. */}
       <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>

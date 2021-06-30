@@ -3,6 +3,12 @@ import HighlightOff from "@material-ui/icons/HighlightOff";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "./cartSlice";
 
+/**
+ * Component for a unique item in shopping cart
+ *
+ * @param {*} props contains cart item object. E.g. {name: "a", price: 10, quantity: 1, totalPrice: 10}
+ * @returns CartItem component
+ */
 export default function CartItem(props) {
   const { item } = props;
   const dispatch = useDispatch();
