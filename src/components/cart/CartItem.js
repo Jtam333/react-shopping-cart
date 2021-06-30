@@ -1,4 +1,4 @@
-import { IconButton, Box } from "@material-ui/core";
+import { IconButton, Box, Typography } from "@material-ui/core";
 import HighlightOff from "@material-ui/icons/HighlightOff";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "./cartSlice";
@@ -15,10 +15,10 @@ export default function CartItem(props) {
       justifyContent="space-between"
     >
       <Box>
-        <Box fontWeight="fontWeightBold">{item.name}</Box>
+        <Typography style={{ fontWeight: 600 }}>{item.name}</Typography>
         <div>${item.price.toFixed(2)}</div>
         <div>Quantity: {item.quantity}</div>
-        <div>Total Price: ${item.totalPrice.toFixed(2)}</div>
+        <div>Total: ${item.totalPrice.toFixed(2)}</div>
       </Box>
       <Box display="flex" alignItems="center">
         <IconButton

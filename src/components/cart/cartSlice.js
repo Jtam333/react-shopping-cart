@@ -6,11 +6,6 @@ export const cartSlice = createSlice({
     cartItems: [],
   },
   reducers: {
-    /**
-     *
-     * @param {*} state
-     * @param {*} action
-     */
     addToCart: (state, action) => {
       const addedItem = { ...action.payload };
 
@@ -22,10 +17,10 @@ export const cartSlice = createSlice({
       // Adds the new item to cart only if item isn't already in cart. Otherwise increases item quantity by 1.
       if (itemExists) {
         // Finds the existing item in cart state and increments its quantity by 1.
-        let foundIndex = state.cartItems.findIndex(
+        const foundIndex = state.cartItems.findIndex(
           (x) => x.name === addedItem.name
         );
-        let existingItem = state.cartItems[foundIndex];
+        const existingItem = state.cartItems[foundIndex];
 
         existingItem.quantity++;
       } else {
@@ -46,6 +41,12 @@ export const cartSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addToCart, removeFromCart } = cartSlice.actions;
 
+/**
+ * Selector function to get the items in cart.
+ *
+ * @param {*} state state of cart
+ * @returns an array of objects representing items in cart (sum of price per item included)
+ */
 export const selectCart = (state) => {
   const mapFunction = (item) => ({
     ...item,
@@ -54,6 +55,12 @@ export const selectCart = (state) => {
   return state.cart.cartItems.map(mapFunction);
 };
 
+/**
+ * Selector function to get the total price of all items in the cart.
+ *
+ * @param {*} state state of cart
+ * @returns the total price of all items in cart
+ */
 export const selectCartTotal = (state) => {
   const reduceFunction = (total, item) => total + item.price * item.quantity;
   return state.cart.cartItems.reduce(reduceFunction, 0);

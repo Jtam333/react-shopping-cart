@@ -7,6 +7,11 @@ export default function Cart() {
   const cartItems = useSelector(selectCart);
   const subtotal = useSelector(selectCartTotal);
 
+  /**
+   * Renders HTML for shopping cart if there are items in the cart.
+   * 
+   * @returns HTML for cart display
+   */
   function ShowCart() {
     return (
       <div>

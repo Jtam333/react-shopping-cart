@@ -1,21 +1,19 @@
 import Shop from "./components/shop/Shop";
 import Cart from "./components/cart/Cart";
-import { Box, Grid, Divider, Typography } from "@material-ui/core";
+import { Box, Grid, Divider } from "@material-ui/core";
 
 function App() {
   return (
     <Box p={2}>
-      <Typography>
-        <Grid className="App" container spacing={3}>
-          <Grid item sm>
-            <Shop />
-          </Grid>
-          <Divider orientation="vertical" flexItem />
-          <Grid item sm>
-            <Cart />
-          </Grid>
+      <Grid className="App" container spacing={3}>
+        <Grid item sm>
+          <Shop />
         </Grid>
-      </Typography>
+        <Divider orientation="vertical" flexItem />
+        <Grid item sm>
+          <Cart />
+        </Grid>
+      </Grid>
     </Box>
   );
 }
